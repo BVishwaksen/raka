@@ -1,0 +1,7 @@
+# Regulated / high-risk: block on medium-confidence, confirm side effects, tight limits.
+input: { block_score: 0.5 }
+context: { quarantine_score: 1 }
+provenance: { untrusted_action: block }
+approval: { confirm_side_effects: true }
+output: { commitment_action: block }
+limits: { max_tool_calls_per_session: 10, max_input_chars: 4000, max_inputs_per_minute: 15 }

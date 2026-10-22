@@ -1,0 +1,6 @@
+# Low-risk / early testing: mostly log and flag; block only clear violations.
+input: { block_score: 1.5 }
+context: { quarantine_score: 4 }
+provenance: { untrusted_action: flag }
+output: { commitment_action: flag }
+limits: { max_tool_calls_per_session: 50, max_input_chars: 20000, max_inputs_per_minute: 120 }

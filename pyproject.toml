@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentguard"
+version = "0.1.0"
+description = "Framework-neutral security layer for tool-using AI agents: guard checkpoints, policy engine, audit trail and a red-team harness."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+ml = ["sentence-transformers>=2.7"]
+postgres = ["psycopg[binary]>=3.1"]
+sidecar = ["fastapi>=0.110", "uvicorn>=0.29"]
+redteam = ["httpx>=0.27"]
+dev = ["pytest>=8", "hypothesis>=6", "httpx>=0.27"]
+
+[project.scripts]
+agentguard-redteam = "agentguard.redteam.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agentguard = ["policy/profiles/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

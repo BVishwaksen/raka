@@ -1,0 +1,6 @@
+# Default: block on high-confidence, flag the rest, moderate limits.
+input: { block_score: 0.8 }
+context: { quarantine_score: 2 }
+provenance: { untrusted_action: block }
+output: { commitment_action: flag }
+limits: { max_tool_calls_per_session: 20, max_input_chars: 8000 }
